@@ -15,6 +15,9 @@
             <a href="/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
 
             <div>
+                <%- article.description %>
+            </div>
+            <div>
                 <%- article.sanitizedHtml %>
             </div>
         </div>
