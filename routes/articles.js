@@ -36,6 +36,22 @@ router.get('/', async (req, res) => {
     res.render('articles/lists', {article:article})
   })
 
+// router.post('/', async (req, res) => {
+//     let article = new Article({
+//         title:req.body.title,
+//         description:req.body.description,
+//         markdown:req.body.markdown
+//     })
+
+// try{
+//     await article.save()
+//     res.redirect(`/articles/${article.slug}`)
+//     console.log('Article saved successfully')    
+//     } catch (e){
+//     res.render('articles/new', {article:article})
+//     }
+// })
+
 router.post('/', async (req, res , next) => {
     req.article =  new Article()
     next()
