@@ -1,137 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <%- include ('articles/header') -%>
     <style>
-
+        @import url("https://fonts.googleapis.com/css?family=Quattrocento+Sans&display=swap");
+        /* body {
+            margin: 0;
+            font-family: "Quattrocento Sans";
+            overflow: hidden;
+        } */
+        
+        h2 {
+            font-weight: bolder;
+        }
+        
+        #auth {
+            width: 100vw;
+            height: 95vh;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #auth.sign-up #slider {
+            left: 50vw;
+        }
+        
+        #auth form {
+            flex: 0 0 50%;
+            padding: 5vh 10vw;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #f2f2f7;
+        }
+        
+        #auth form label {
+            margin-bottom: 2px;
+        }
+        
+        #auth form button,
+        #auth form input {
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            outline: none;
+        }
+        
+        #auth form input {
+            border: 1px solid #b5b5b5;
+            transition: 125ms ease;
+        }
+        
+        #auth form input:focus {
+            border-color: blue;
+            box-shadow: 0 0 0 2pt rgba(0, 0, 255, 0.3);
+        }
+        
+        #auth form button {
+            color: white;
+            border: none;
+            margin-top: 10px;
+            background: rgba(0, 0, 255, 0.7);
+            box-shadow: 0 3px 15px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-family: "Quattrocento Sans";
+            transition: 75ms ease;
+        }
+        
+        #auth form button:active {
+            background: blue;
+            transform: scale(0.95);
+        }
+        
+        #slider {
+            color: white;
+            position: absolute;
+            top: 5;
+            left: 0;
+            width: 50vw;
+            height: 100vh;
+            background-image: url(https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80);
+            background-attachment: fixed;
+            background-size: 100vw;
+            transition: left 300ms ease;
+            clip-path: inset(0);
+        }
+        
+        #slider:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            /* background-color: rgb(105, 105, 139); */
+            opacity: 0.5;
+        }
+        
+        #slider div {
+            color: white;
+            position: fixed;
+            height: 100%;
+            width: 50vw;
+            padding: 50px;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        
+        #slider #login-text {
+            left: 0;
+        }
+        
+        #slider #sign-up-text {
+            left: 50vw;
+        }
+        
+        .toggle {
+            text-align: center;
+            color: #757575;
+        }
+        
+        .toggle span {
+            color: blue;
+            cursor: pointer;
+        }
     </style>
 
     <body>
-
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
-
-        <div class="container register">
-            <div class="row">
-                <div class="col-md-3 register-left">
-                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                    <h3>Welcome</h3>
-                    <p>You are 30 seconds away from earning your own money!</p>
-                    <input type="submit" name="" value="Login" /><br/>
+        <section id="auth">
+            <form id="sign-up" action="/user/signup" method="POST">
+                <h2>Sign Up</h2>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input required value="<%= user.firstname %>" type="text" name="firstname" id="firstname" class="form-control">
                 </div>
-                <div class="col-md-9 register-right">
-                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading">Apply as a Employee</h3>
-                            <div class="row register-form">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="First Name *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="maxl">
-                                            <label class="radio inline"> 
-                                                            <input type="radio" name="gender" value="male" checked>
-                                                            <span> Male </span> 
-                                                        </label>
-                                            <label class="radio inline"> 
-                                                            <input type="radio" name="gender" value="female">
-                                                            <span>Female </span> 
-                                                        </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Your Email *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control">
-                                                        <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                        <option>What is your Birthdate?</option>
-                                                        <option>What is Your old Phone Number</option>
-                                                        <option>What is your Pet Name?</option>
-                                                    </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                                    </div>
-                                    <input type="submit" class="btnRegister" value="Register" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <h3 class="register-heading">Apply as a Hirer</h3>
-                            <div class="row register-form">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="First Name *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-                                    </div>
-
-
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control">
-                                                        <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                        <option>What is your Birthdate?</option>
-                                                        <option>What is Your old Phone Number</option>
-                                                        <option>What is your Pet Name?</option>
-                                                    </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                                    </div>
-                                    <input type="submit" class="btnRegister" value="Register" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input required value="<%= user.lastname %>" type="text" name="lastname" id="lastname" class="form-control">
                 </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input required value="<%= user.username %>" type="text" name="username" id="lastname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input required value="<%= user.email %>" type="email" name="email" id="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input required value="<%= user.password %>" type="password" name="password" id="password" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-success">Save</button>
+                <div class="toggle">
+                    Already have an account?
+                    <span onclick="$('#auth').removeClass('sign-up')">Log in</span>
+                </div>
+            </form>
+
+            <form id="login" action="/user/login" method="POST">
+                <h2>Log In</h2>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input required value="<%= user.email %>" type="email" name="email" id="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input required value="<%= user.password %>" type="password" name="password" id="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+                <div class="toggle">
+                    Have you been here before?
+                    <span onclick="$('#auth').addClass('sign-up')">Sign up<span>
+              </div>
+            </form>
+                
+            <div id="slider">
+              <div id="login-text">
+                <h1>Welcome back!</h1>
+                <p>We value our partners and manage our business relationships with integrity and transparency.</p>
+              </div>
+              
+              <div id="sign-up-text">
+                <h1>Open up new posibilities</h1>
+                <p>Welcome on board as we embark on an exploration of innovation enlightenment for new possibilities.</p>
+              </div>
             </div>
-
-        </div>
-
-    </body>
-    <br>
-    <hr>
-    <%- include ('articles/footer') -%>
+          </section>
+          </body>
+          <br>
+          <hr>
+      
+          <%- include ('articles/footer') -%>
 
 </html>

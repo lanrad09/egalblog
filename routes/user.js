@@ -149,7 +149,7 @@ router.post(
 
 router.get("/signup", async (req, res) => {
 try {
-  res.render('user2', {user: new User()})
+  res.render('user', {user: new User()})
   } catch (e) {
     res.send({ message: "Error in Fetching user" });
   }

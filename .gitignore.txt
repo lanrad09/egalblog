@@ -1,4 +1,4 @@
 # Ignore Dotenv file
 .env
-# Ignore all .rest files
+# Ignore all dotrest files
 .rest
