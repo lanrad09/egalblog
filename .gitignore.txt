@@ -2,3 +2,5 @@
 .env
 # Ignore all dotrest files
 .rest
+# Ignore node_modules
+node_modules
