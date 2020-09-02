@@ -1,0 +1,13 @@
+
+
+###
+POST http://localhost:5000/user/signup
+Content-Type: application/json
+
+{
+    "firstname":"ola",
+    "lastname":"adebayo",
+    "username":"lanrad09",
+    "email":"lanrad09@gmaiol.com",
+    "password":"baba2020#"
+}

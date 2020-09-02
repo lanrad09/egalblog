@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const articleRouter = require('./routes/articles');
-// const homeRouter = require('./routes/home');
+const userRouter = require('./routes/user');
 const methodoverride = require('method-override');
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false})) //
 app.use(methodoverride('_method')) // setting param '_method' will override POST/GET method of form and allow delete method to be set in a form
 app.use(express.json())
 app.use('/articles', articleRouter) // Use the Article route
-// app.use('/home', homeRouter) // Use the Home route
+app.use('/user', userRouter) // User route
 
 
 
