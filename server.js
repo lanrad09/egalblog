@@ -36,6 +36,11 @@ app.get('/donate' , (req, res) => {
     res.render('supporter')
    
 })
+app.get('/partners' , (req, res) => {
+
+    res.render('partners')
+   
+})
 
 app.listen(port , ()=> {
     console.log(`Server is runing on port: ${port}`);
