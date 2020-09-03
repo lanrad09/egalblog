@@ -31,6 +31,11 @@ app.get('/' , (req, res) => {
     res.render('home')
    
 })
+app.get('/donate' , (req, res) => {
+
+    res.render('supporter')
+   
+})
 
 app.listen(port , ()=> {
     console.log(`Server is runing on port: ${port}`);
