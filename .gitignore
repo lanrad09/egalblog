@@ -1,6 +1,7 @@
 # Ignore Dotenv file
 .env
 # Ignore all dotrest files
-.rest
+test.rest
 # Ignore node_modules
 node_modules
+users.js

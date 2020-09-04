@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const articleRouter = require('./routes/articles');
 const userRouter = require('./routes/user');
+//const userRouter = require('./routes/users');
 const methodoverride = require('method-override');
 const app = express();
 
@@ -18,8 +19,10 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: false})) //
 app.use(methodoverride('_method')) // setting param '_method' will override POST/GET method of form and allow delete method to be set in a form
 app.use(express.json())
+app.use('/uploads', express.static('uploads'));
 app.use('/articles', articleRouter) // Use the Article route
 app.use('/user', userRouter) // User route
+//app.use('/users', userRouter) 
 
 
 

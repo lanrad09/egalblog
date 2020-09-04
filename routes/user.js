@@ -26,8 +26,7 @@ router.post(
         }
 
         let {
-            firstname,
-            lastname,
+            fullname,
             username,
             email,
             password
@@ -43,8 +42,7 @@ router.post(
             }
 
             user = new User({
-                firstname,
-                lastname,
+                fullname,
                 username,
                 email,
                 password
